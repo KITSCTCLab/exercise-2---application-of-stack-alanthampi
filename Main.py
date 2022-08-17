@@ -5,7 +5,17 @@ class Evaluate:
       size_of_stack: An integer which represents the size of stack.
       stack: A List which acts as a Stack.
   """
-    # Write your code here
+    for i in expression:
+        if i.isnumeric():
+            self.push(int(i))
+        else:
+           a=self._pop()
+           b=self._pop()
+           operations_dictionary={"+":operator.add,"-":operator.sub,"*":operator.mul,"/":operator.floordiv,"^":operator.pow}
+           self.push(operations_dictionary[i](b,a))
+     
+    return self.stack[0]
+
 
 
   def __init__(self, size):
